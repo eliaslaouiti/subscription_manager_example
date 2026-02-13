@@ -1,0 +1,7 @@
+when@dev: &dev
+    zenstruck_foundry:
+        persistence:
+            flush_once: true
+        enable_auto_refresh_with_lazy_objects: true
+
+when@test: *dev

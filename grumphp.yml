@@ -1,0 +1,47 @@
+grumphp:
+    fixer:
+        enabled: true
+        fix_by_default: true
+    tasks:
+        git_commit_message:
+            allow_empty_message: false
+            enforce_capitalized_subject: false
+            enforce_no_subject_punctuations: false
+            enforce_single_lined_subject: true
+            max_body_width: 72
+            max_subject_width: 90
+            type_scope_conventions:
+                types:
+                    - build
+                    - ci
+                    - chore
+                    - docs
+                    - feat
+                    - fix
+                    - perf
+                    - refactor
+                    - revert
+                    - style
+                    - test
+                scopes: []
+
+        phpstan:
+            autoload_file: ~
+            configuration: 'phpstan.neon'
+            level: null
+            force_patterns: []
+            ignore_patterns: []
+            triggered_by: ['php']
+            memory_limit: "-1"
+            use_grumphp_paths: false
+
+        phpcsfixer:
+            allow_risky: ~
+            cache_file: ~
+            config: '.php-cs-fixer.dist.php'
+            rules: []
+            using_cache: ~
+            config_contains_finder: true
+            verbose: true
+            diff: false
+            triggered_by: ['php']

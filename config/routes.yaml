@@ -9,3 +9,5 @@
 
 controllers:
     resource: routing.controllers
+    defaults:
+        _format: json

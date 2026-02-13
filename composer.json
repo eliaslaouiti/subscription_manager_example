@@ -4,21 +4,37 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^3.2",
+        "doctrine/doctrine-migrations-bundle": "^4.0",
+        "doctrine/orm": "^3.6",
+        "nelmio/api-doc-bundle": "^5.9",
+        "phpdocumentor/reflection-docblock": "^5.6",
+        "phpstan/phpdoc-parser": "^2.3",
+        "symfony/asset": "8.0.*",
         "symfony/console": "8.0.*",
         "symfony/dotenv": "8.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "8.0.*",
+        "symfony/monolog-bundle": "^4.0",
+        "symfony/object-mapper": "8.0.*",
+        "symfony/property-access": "8.0.*",
+        "symfony/property-info": "8.0.*",
         "symfony/runtime": "8.0.*",
-        "symfony/yaml": "8.0.*"
-    },
-    "require-dev": {
+        "symfony/serializer": "8.0.*",
+        "symfony/twig-bundle": "8.0.*",
+        "symfony/uid": "8.0.*",
+        "symfony/validator": "8.0.*",
+        "symfony/yaml": "8.0.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
     },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
+            "phpro/grumphp-shim": true,
             "symfony/flex": true,
             "symfony/runtime": true
         },
@@ -48,6 +64,9 @@
         "symfony/polyfill-php84": "*"
     },
     "scripts": {
+        "analyse": "vendor/bin/phpstan analyse -c phpstan.neon",
+        "cs-check": "./vendor/bin/php-cs-fixer check",
+        "cs-fix": "./vendor/bin/php-cs-fixer fix",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -67,5 +86,14 @@
             "allow-contrib": false,
             "require": "8.0.*"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "phpro/grumphp-shim": "2.17.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^13.0",
+        "symfony/browser-kit": "8.0.*",
+        "symfony/maker-bundle": "^1.66",
+        "zenstruck/foundry": "^2.9"
     }
 }
