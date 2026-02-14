@@ -67,6 +67,8 @@
         "analyse": "vendor/bin/phpstan analyse -c phpstan.neon",
         "cs-check": "./vendor/bin/php-cs-fixer check",
         "cs-fix": "./vendor/bin/php-cs-fixer fix",
+        "test:application": "./vendor/bin/phpunit --colors=always",
+        "load-fixtures": "bin/console foundry:load-fixtures -n",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
