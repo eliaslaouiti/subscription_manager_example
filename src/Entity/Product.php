@@ -25,6 +25,7 @@ class Product
     }
 
     #[Assert\Type('string')]
+    #[Assert\NotBlank]
     #[Assert\Length(min: 1, max: 255)]
     #[ORM\Column(length: 255)]
     #[Groups(['product:read'])]
@@ -51,6 +52,7 @@ class Product
     /**
      * @var Collection<int, ProductPrice>
      */
+    #[Assert\Valid]
     #[ORM\OneToMany(targetEntity: ProductPrice::class, mappedBy: 'product', cascade: ['persist'], orphanRemoval: true)]
     #[Groups(['product:read'])]
     public private(set) Collection $prices {
