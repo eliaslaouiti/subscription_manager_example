@@ -15,7 +15,7 @@ class ProductPrice
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::STRING, length: 36, unique: true)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'product_price:read'])]
     public private(set) string $id {
         get {
             return $this->id;
@@ -38,7 +38,7 @@ class ProductPrice
     #[Assert\NotNull]
     #[Assert\Type(ProductPricePeriod::class)]
     #[ORM\Column(enumType: ProductPricePeriod::class)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'product_price:read'])]
     public ProductPricePeriod $pricePeriod {
         get {
             return $this->pricePeriod;
@@ -52,7 +52,7 @@ class ProductPrice
     #[Assert\Type('int')]
     #[Assert\GreaterThanOrEqual(0)]
     #[ORM\Column(type: Types::INTEGER)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'product_price:read'])]
     public int $price {
         get {
             return $this->price;

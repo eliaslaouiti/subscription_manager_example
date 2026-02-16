@@ -15,4 +15,15 @@ class ProductPriceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ProductPrice::class);
     }
+
+    public function findOneByIdAndProduct(string $id, string $productId): ?ProductPrice
+    {
+        return $this->createQueryBuilder('pp')
+            ->where('pp.id = :id')
+            ->andWhere('pp.product = :productId')
+            ->setParameter('id', $id)
+            ->setParameter('productId', $productId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
