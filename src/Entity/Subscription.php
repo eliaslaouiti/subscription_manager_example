@@ -25,7 +25,6 @@ class Subscription
     #[Assert\NotNull]
     #[ORM\ManyToOne(inversedBy: 'subscriptions')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['subscription:read'])]
     public ?User $user {
         get {
             return $this->user;

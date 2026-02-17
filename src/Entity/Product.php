@@ -17,7 +17,7 @@ class Product
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::STRING, length: 36, unique: true)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'subscription:read'])]
     public private(set) string $id {
         get {
             return $this->id;
@@ -28,7 +28,7 @@ class Product
     #[Assert\NotBlank]
     #[Assert\Length(min: 1, max: 255)]
     #[ORM\Column(length: 255)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'subscription:read'])]
     public string $name {
         get {
             return $this->name;
@@ -39,7 +39,7 @@ class Product
     }
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['product:read'])]
+    #[Groups(['product:read', 'subscription:read'])]
     public string $description {
         get {
             return $this->description;

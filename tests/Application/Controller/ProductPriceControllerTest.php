@@ -14,7 +14,7 @@ final class ProductPriceControllerTest extends WebTestCase
 {
     use Factories;
 
-    private const array PRICE_SCHEMA = ['id', 'price', 'pricePeriod', 'subscriptions'];
+    private const array PRICE_SCHEMA = ['id', 'price', 'pricePeriod'];
 
     /******************************************
      * CGET

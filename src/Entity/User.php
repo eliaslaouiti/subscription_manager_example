@@ -69,7 +69,6 @@ class User
      * @var Collection<int, Subscription>
      */
     #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'user', cascade: ['persist'], orphanRemoval: true)]
-    #[Groups(['user:read'])]
     public private(set) Collection $subscriptions {
         get {
             return $this->subscriptions;
