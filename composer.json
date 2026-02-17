@@ -70,6 +70,8 @@
         "cs-check": "./vendor/bin/php-cs-fixer check",
         "cs-fix": "./vendor/bin/php-cs-fixer fix",
         "test:application": "./vendor/bin/phpunit --colors=always",
+        "test:unit": "./vendor/bin/phpunit --colors=always --testsuite=unit",
+        "start": "symfony server:start",
         "load-fixtures": "bin/console foundry:load-fixtures -n",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

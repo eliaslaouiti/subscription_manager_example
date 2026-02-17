@@ -26,10 +26,30 @@ This project is a demonstration of a subscription management API done for an int
 ## 🧑‍💻 Contributing
 
 ### ⌨️ Local development
- => WIP
+
+#### Prerequisites
+- PHP 8.5+
+- Composer
+- Symfony CLI
+
+#### Setup
+```bash
+make install
+make db
+```
+
+#### Start dev server
+```bash
+make start
+```
 
 ### 🧪 Run tests
- => WIP
+
+```bash
+make test          # all tests
+make test-unit     # unit tests only
+make test-app      # application (functional) tests only
+```
 
 ## 🔍 Static Analysis with PHPStan
 
