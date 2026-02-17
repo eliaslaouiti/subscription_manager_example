@@ -93,8 +93,13 @@ class ProductController extends AbstractController
 
     #[Route('/{id}', name: 'patch_product', methods: [Request::METHOD_PATCH])]
     #[OA\Parameter(name: 'id', description: 'The product identifier', in: 'path')]
-    #[OA\Response(response: Response::HTTP_NO_CONTENT, description: 'Product deleted')]
+    #[OA\Response(
+        response: Response::HTTP_OK,
+        description: 'Returns the updated product',
+        content: new Model(type: Product::class, groups: ['product:read'])
+    )]
     #[OA\Response(response: Response::HTTP_NOT_FOUND, description: 'Product not found')]
+    #[OA\Response(response: Response::HTTP_UNPROCESSABLE_ENTITY, description: 'Validation issue')]
     public function patchAction(
         #[MapEntity] Product $product,
         #[MapRequestPayload] UpdateProductDto $updateProductDto,

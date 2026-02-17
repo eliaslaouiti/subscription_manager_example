@@ -67,7 +67,6 @@ final class UserController extends AbstractController
     }
 
     #[Route('/users', name: 'post_user', methods: [Request::METHOD_POST])]
-    #[OA\Parameter(name: 'id', description: 'The user identifier', in: 'path')]
     #[OA\Response(
         response: Response::HTTP_CREATED,
         description: 'Returns a user',
