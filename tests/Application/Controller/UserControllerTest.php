@@ -40,7 +40,7 @@ final class UserControllerTest extends WebTestCase
         self::assertCount(3, $decoded);
 
         foreach ($decoded as $item) {
-            Helpers::validateBody($item, ['id', 'firstName', 'email', 'lastName']);
+            Helpers::validateBody($item, ['id', 'firstName', 'email', 'lastName', 'subscriptions']);
         }
     }
 
@@ -68,7 +68,7 @@ final class UserControllerTest extends WebTestCase
         self::assertJson($body);
 
         $decoded = json_decode($body, true);
-        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName']);
+        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName', 'subscriptions']);
         self::assertSame($decoded['id'], $user->id);
         self::assertSame($decoded['firstName'], $user->firstName);
         self::assertSame($decoded['lastName'], $user->lastName);
@@ -96,7 +96,7 @@ final class UserControllerTest extends WebTestCase
 
         $decoded = json_decode($resp, true);
 
-        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName']);
+        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName', 'subscriptions']);
         self::assertNotNull($decoded['id']);
         self::assertSame($decoded['firstName'], $body['firstName']);
         self::assertSame($decoded['lastName'], $body['lastName']);
@@ -167,7 +167,7 @@ final class UserControllerTest extends WebTestCase
 
         $decoded = json_decode($resp, true);
 
-        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName']);
+        Helpers::validateBody($decoded, ['id', 'firstName', 'email', 'lastName', 'subscriptions']);
         self::assertSame($decoded['id'], $user->id);
         self::assertSame($decoded['firstName'], $user->firstName);
         self::assertSame($decoded['lastName'], $user->lastName);

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\{ArrayCollection, Collection};
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -64,8 +65,41 @@ class User
         }
     }
 
+    /**
+     * @var Collection<int, Subscription>
+     */
+    #[ORM\OneToMany(targetEntity: Subscription::class, mappedBy: 'user', cascade: ['persist'], orphanRemoval: true)]
+    #[Groups(['user:read'])]
+    public private(set) Collection $subscriptions {
+        get {
+            return $this->subscriptions;
+        }
+    }
+
     public function __construct()
     {
         $this->id = Uuid::v4()->toString();
+        $this->subscriptions = new ArrayCollection();
+    }
+
+    public function addSubscription(Subscription $subscription): static
+    {
+        if (!$this->subscriptions->contains($subscription)) {
+            $this->subscriptions->add($subscription);
+            $subscription->user = $this;
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscription): static
+    {
+        if ($this->subscriptions->removeElement($subscription)) {
+            if ($subscription->user === $this) {
+                $subscription->user = null;
+            }
+        }
+
+        return $this;
     }
 }

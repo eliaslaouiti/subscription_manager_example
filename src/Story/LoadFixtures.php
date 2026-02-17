@@ -3,7 +3,8 @@
 namespace App\Story;
 
 use App\Enum\ProductPricePeriod;
-use App\Factory\{ProductFactory, ProductPriceFactory, UserFactory};
+use App\Factory\{ProductFactory, ProductPriceFactory, SubscriptionFactory, UserFactory};
+use DateTimeImmutable;
 use Zenstruck\Foundry\Attribute\AsFixture;
 use Zenstruck\Foundry\Story;
 
@@ -12,11 +13,12 @@ final class LoadFixtures extends Story
 {
     public function build(): void
     {
-        UserFactory::createMany(10);
+        $users = UserFactory::createMany(10);
         $products = ProductFactory::createMany(3);
 
+        $prices = [];
         foreach ($products as $product) {
-            ProductPriceFactory::createOne([
+            $prices[] = ProductPriceFactory::createOne([
                 'product' => $product,
                 'pricePeriod' => ProductPricePeriod::MONTHLY,
             ]);
@@ -25,5 +27,23 @@ final class LoadFixtures extends Story
                 'pricePeriod' => ProductPricePeriod::YEARLY,
             ]);
         }
+
+        $firstPrice = $prices[0];
+
+        SubscriptionFactory::createOne([
+            'user' => $users[0],
+            'productPrice' => $firstPrice,
+        ]);
+
+        SubscriptionFactory::createOne([
+            'user' => $users[1],
+            'productPrice' => $firstPrice,
+        ]);
+
+        SubscriptionFactory::createOne([
+            'user' => $users[1],
+            'productPrice' => $firstPrice,
+            'endDate' => new DateTimeImmutable('2022-01-01'),
+        ]);
     }
 }
