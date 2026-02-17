@@ -21,7 +21,16 @@ This project is a demonstration of a subscription management API done for an int
 - [GrumPHP](https://github.com/phpro/grumphp) for Git hooks
 - [Conventional Commits](https://www.conventionalcommits.org/) for commit format
 
---- 
+---
+
+## 📖 API Documentation
+
+API documentation is generated with [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) and available in two formats:
+
+- **HTML (Swagger UI)**: `/api/doc`
+- **JSON (OpenAPI)**: `/api/doc.json`
+
+---
 
 ## 🧑‍💻 Contributing
 
